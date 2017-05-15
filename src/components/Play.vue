@@ -50,7 +50,6 @@ export default {
 }
 .fc-button-row {
 	display: flex;
-	width: 100%;
 	justify-content: space-around;
 	margin-top: 15px;
 }
