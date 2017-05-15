@@ -8,12 +8,12 @@
 		<div class="fc-card">
 		</div>
 		<div class="fc-game-buttons">
-			<div>
+			<div class="fc-button-row">
 				<button class="fc-game-btn btn btn-primary">
 					<div class="fc-game-turn">↩️</div>
 				</button>
 			</div>
-			<div>
+			<div class="fc-button-row">
 				<button class="fc-game-btn btn btn-success">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 				</button>
@@ -38,7 +38,7 @@ export default {
 <style scoped>
 .fc-card {
 	position: absolute;
-	top: 25px; left: 10px; bottom: 120px; right: 10px;
+	top: 25px; left: 10px; bottom: 140px; right: 10px;
 	border: 2px solid #888;
 	border-radius: 15px;
 }
@@ -46,6 +46,13 @@ export default {
 .fc-game-buttons {
 	position: absolute;
 	bottom: 10px;
+	left: 0; right: 0;
+}
+.fc-button-row {
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	margin-top: 15px;
 }
 .fc-game-btn {
 	width: 50px;
