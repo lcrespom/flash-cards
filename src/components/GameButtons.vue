@@ -1,18 +1,22 @@
 <template>
 	<div class="fc-game-buttons">
 		<div class="fc-button-row">
-			<button class="fc-game-btn btn btn-primary">
+			<button class="fc-game-btn btn btn-primary"
+				@click="$emit('card-turn')">
 				<div class="fc-game-turn">↩️</div>
 			</button>
 		</div>
 		<div class="fc-button-row">
-			<button class="fc-game-btn btn btn-success">
+			<button class="fc-game-btn btn btn-success"
+				@click="$emit('card-ok')">
 				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 			</button>
-			<button class="fc-game-btn btn btn-danger">
+			<button class="fc-game-btn btn btn-danger"
+				@click="$emit('card-fail')">
 				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</button>
-			<button class="fc-game-btn btn btn-warning">
+			<button class="fc-game-btn btn btn-warning"
+				@click="$emit('card-unknown')">
 				<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
 			</button>
 		</div>
@@ -36,6 +40,9 @@ export default {
 	width: 50px;
 	height: 50px;
 	padding: 0;
+}
+.fc-game-btn:focus {
+	outline: 0;
 }
 .fc-game-btn > span {
 	font-size: 170%;
