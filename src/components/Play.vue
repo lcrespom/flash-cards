@@ -21,10 +21,16 @@ export default {
 </script>
 
 <style scoped>
-.fc-card {
+.fc-game {
 	position: absolute;
-	top: 25px; left: 10px; bottom: 140px; right: 10px;
+	top: 0; left: 0; bottom: 0; right: 0;
+	display: flex;
+	flex-direction: column;
+}
+.fc-card {
 	border: 2px solid #888;
 	border-radius: 15px;
+	margin: 7px;
+	flex: 1;
 }
 </style>

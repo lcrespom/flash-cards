@@ -26,15 +26,11 @@ export default {
 </script>
 
 <style scoped>
-.fc-game-buttons {
-	position: absolute;
-	bottom: 10px;
-	left: 0; right: 0;
-}
 .fc-button-row {
 	display: flex;
 	justify-content: space-around;
-	margin-top: 15px;
+	margin-top: 5px;
+	margin-bottom: 7px;
 }
 .fc-game-btn {
 	width: 50px;
