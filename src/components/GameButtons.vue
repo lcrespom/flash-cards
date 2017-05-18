@@ -11,13 +11,13 @@
 				@click="$emit('card-ok')">
 				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 			</button>
-			<button class="fc-game-btn btn btn-danger"
-				@click="$emit('card-fail')">
-				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-			</button>
 			<button class="fc-game-btn btn btn-warning"
 				@click="$emit('card-unknown')">
 				<span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+			</button>
+			<button class="fc-game-btn btn btn-danger"
+				@click="$emit('card-fail')">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</button>
 		</div>
 	</div>

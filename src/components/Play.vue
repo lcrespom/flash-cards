@@ -1,15 +1,8 @@
 <template>
 	<div class="fc-game">
-		<!-- Game number {{ $route.params.id }} -->
-		<div class="fc-game-status">
-			<span>{{ time }}</span>
-			<span>
-				<span class="glyphicon glyphicon-ok"></span>: {{ stats.ok }} -
-				<span class="glyphicon glyphicon-remove"></span>: {{ stats.fail }} -
-				<span class="glyphicon glyphicon-question-sign"></span>: {{ stats.unknown }}
-			</span>
-			<span>{{ cardNum + 1 }}/{{ cards.length }}</span>
-		</div>
+		<!-- Status -->
+		<game-status :stats="stats" :cards="cards" :cardNum="cardNum" />
+		<!-- Cards -->
 		<div class="fc-card">
 			<div class="fc-card-flipper"
 				:class="{ flipped: flipped }"
@@ -18,12 +11,14 @@
 				<div class="fc-card-back">{{ card.back }}</div>
 			</div>
 		</div>
+		<!-- Buttons -->
 		<game-buttons @card-turn="flip"
 			@card-ok="cardOK" @card-fail="cardFail" @card-unknown="cardUnknown" />
 	</div>
 </template>
 
 <script>
+import GameStatus from './GameStatus';
 import GameButtons from './GameButtons';
 import { loadCards } from '../app/cards';
 
@@ -31,26 +26,16 @@ const INITIAL_STATS = {
 	ok: 0, fail: 0, unknown: 0
 };
 
-function formatInterval(ms) {
-	let secs = Math.round(ms / 1000);
-	let mins = Math.round(secs / 60);
-	secs = '' + (secs % 60);
-	if (secs.length < 2) secs = '0' + secs;
-	return `${mins}:${secs}`;
-}
-
-
 export default {
 	name: 'play',
-	components: { GameButtons },
+	components: { GameStatus, GameButtons },
 	data() {
 		return {
 			flipped: false,
 			cards: [],
 			stats: INITIAL_STATS,
 			card: { front: 'Loading...', back: 'Loading...' },
-			cardNum: 0,
-			time: '0:00',
+			cardNum: 0
 		};
 	},
 	mounted() {
@@ -61,12 +46,6 @@ export default {
 			this.card = cards[0];
 			this.cardNum = 0;
 		});
-		this.initialTime = Date.now();
-		this.interval = setInterval(
-			_ => this.time = formatInterval(Date.now() - this.initialTime), 1000);
-	},
-	destroyed() {
-		clearInterval(this.interval);
 	},
 	methods: {
 		flip() {
@@ -105,16 +84,11 @@ export default {
 	display: flex;
 	flex-direction: column;
 }
-.fc-game-status {
-	display: flex;
-	justify-content: space-between;
-	margin: 0 7px;
-	font-size: 150%;
-}
 .fc-card {
 	margin: 7px;
 	flex: 1;
 	perspective: 1000px;
+	position: relative;
 }
 .fc-card-flipper {
 	/* Card flipping obtained from https://davidwalsh.name/css-flip */
@@ -122,6 +96,7 @@ export default {
 	width: 100%;
 	transition: 0.5s;
 	transform-style: preserve-3d;
+	position: absolute;
 }
 .fc-card-flipper.flipped {
 	transform: rotateY(-180deg);
