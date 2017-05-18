@@ -1,14 +1,16 @@
 <template>
 	<div>
 		<div class="fc-btn-box">
-			<router-link to="search" class="fc-home-btn btn btn-primary">Search</router-link>
+			<router-link to="search"
+				class="fc-home-btn btn btn-primary btn-lg">Search</router-link>
 		</div>
 		<div class="fc-btn-box">
-			<router-link to="new" class="fc-home-btn btn btn-primary">New</router-link>
+			<router-link to="new"
+				class="fc-home-btn btn btn-primary btn-lg">New</router-link>
 		</div>
 		<div class="fc-btn-box">
 			<router-link :to="{ name: 'play', params: { id: 1 } }"
-				class="fc-home-btn btn btn-primary">Play (testing)</router-link>
+				class="fc-home-btn btn btn-primary btn-lg">Play (testing)</router-link>
 		</div>
 	</div>
 </template>

@@ -2,13 +2,13 @@
 	<div class="fc-game">
 		<!-- Game number {{ $route.params.id }} -->
 		<div class="fc-game-status">
-			<span>00:00</span>
+			<span>{{ time }}</span>
 			<span>
 				<span class="glyphicon glyphicon-ok"></span>: {{ stats.ok }} -
 				<span class="glyphicon glyphicon-remove"></span>: {{ stats.fail }} -
 				<span class="glyphicon glyphicon-question-sign"></span>: {{ stats.unknown }}
 			</span>
-			<span>1/10</span>
+			<span>{{ cardNum + 1 }}/{{ cards.length }}</span>
 		</div>
 		<div class="fc-card">
 			<div class="fc-card-flipper"
@@ -40,7 +40,8 @@ export default {
 			cards: [],
 			stats: INITIAL_STATS,
 			card: { front: 'Loading...', back: 'Loading...' },
-			cardNum: 0
+			cardNum: 0,
+			time: '00:00',
 		};
 	},
 	mounted() {
@@ -69,9 +70,10 @@ export default {
 			this.nextCard();
 		},
 		nextCard() {
-			if (this.cardNum < this.cards.length) {
+			if (this.cardNum < this.cards.length - 1) {
 				this.cardNum++;
 				this.card = this.cards[this.cardNum];
+				this.flipped = false;
 			}
 			else {
 				//ToDo: finish game
