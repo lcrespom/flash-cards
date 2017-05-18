@@ -3,34 +3,79 @@
 		<!-- Game number {{ $route.params.id }} -->
 		<div class="fc-game-status">
 			<span>00:00</span>
+			<span>
+				<span class="glyphicon glyphicon-ok"></span>: {{ stats.ok }} -
+				<span class="glyphicon glyphicon-remove"></span>: {{ stats.fail }} -
+				<span class="glyphicon glyphicon-question-sign"></span>: {{ stats.unknown }}
+			</span>
 			<span>1/10</span>
 		</div>
 		<div class="fc-card">
 			<div class="fc-card-flipper"
 				:class="{ flipped: flipped }"
 				@click="flip">
-				<div class="fc-card-front">Front</div>
-				<div class="fc-card-back">Back</div>
+				<div class="fc-card-front">{{ card.front }}</div>
+				<div class="fc-card-back">{{ card.back }}</div>
 			</div>
 		</div>
-		<game-buttons @card-turn="flip"/>
+		<game-buttons @card-turn="flip"
+			@card-ok="cardOK" @card-fail="cardFail" @card-unknown="cardUnknown" />
 	</div>
 </template>
 
 <script>
 import GameButtons from './GameButtons';
+import { loadCards } from '../app/cards';
+
+const INITIAL_STATS = {
+	ok: 0, fail: 0, unknown: 0
+};
 
 export default {
 	name: 'play',
 	components: { GameButtons },
 	data() {
 		return {
-			flipped: false
+			flipped: false,
+			cards: [],
+			stats: INITIAL_STATS,
+			card: { front: 'Loading...', back: 'Loading...' },
+			cardNum: 0
 		};
+	},
+	mounted() {
+		loadCards(this.$route.params.id)
+		.then(cards => {
+			this.cards = cards;
+			this.stats = INITIAL_STATS;
+			this.card = cards[0];
+			this.cardNum = 0;
+		});
 	},
 	methods: {
 		flip() {
 			this.flipped = !this.flipped;
+		},
+		cardOK() {
+			this.stats.ok++;
+			this.nextCard();
+		},
+		cardFail() {
+			this.stats.fail++;
+			this.nextCard();
+		},
+		cardUnknown() {
+			this.stats.unknown++;
+			this.nextCard();
+		},
+		nextCard() {
+			if (this.cardNum < this.cards.length) {
+				this.cardNum++;
+				this.card = this.cards[this.cardNum];
+			}
+			else {
+				//ToDo: finish game
+			}
 		}
 	}
 };
@@ -42,6 +87,12 @@ export default {
 	top: 0; left: 0; bottom: 0; right: 0;
 	display: flex;
 	flex-direction: column;
+}
+.fc-game-status {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 7px;
+	font-size: 150%;
 }
 .fc-card {
 	margin: 7px;
