@@ -31,6 +31,15 @@ const INITIAL_STATS = {
 	ok: 0, fail: 0, unknown: 0
 };
 
+function formatInterval(ms) {
+	let secs = Math.round(ms / 1000);
+	let mins = Math.round(secs / 60);
+	secs = '' + (secs % 60);
+	if (secs.length < 2) secs = '0' + secs;
+	return `${mins}:${secs}`;
+}
+
+
 export default {
 	name: 'play',
 	components: { GameButtons },
@@ -41,7 +50,7 @@ export default {
 			stats: INITIAL_STATS,
 			card: { front: 'Loading...', back: 'Loading...' },
 			cardNum: 0,
-			time: '00:00',
+			time: '0:00',
 		};
 	},
 	mounted() {
@@ -52,6 +61,12 @@ export default {
 			this.card = cards[0];
 			this.cardNum = 0;
 		});
+		this.initialTime = Date.now();
+		this.interval = setInterval(
+			_ => this.time = formatInterval(Date.now() - this.initialTime), 1000);
+	},
+	destroyed() {
+		clearInterval(this.interval);
 	},
 	methods: {
 		flip() {
