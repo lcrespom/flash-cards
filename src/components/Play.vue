@@ -3,12 +3,21 @@
 		<!-- Status -->
 		<game-status :stats="stats" :cards="cards" :cardNum="cardNum" />
 		<!-- Cards -->
-		<div class="fc-card">
-			<div class="fc-card-flipper"
-				:class="{ flipped: flipped }"
-				@click="flip">
-				<div class="fc-card-front">{{ card.front }}</div>
-				<div class="fc-card-back">{{ card.back }}</div>
+		<div class="fc-card-box">
+			<div class="fc-card-row fc-fill">
+				<transition name="swipe">
+					<div v-for="(card, i) of cards" v-if="i == cardNum"
+						:key="i"
+						class="fc-card fc-fill"
+						style="`transform: translateX(${i}00%)`">
+						<div class="fc-card-flipper fc-fill"
+							:class="{ flipped: flipped }"
+							@click="flip">
+							<div class="fc-card-front">{{ card.front }}</div>
+							<div class="fc-card-back">{{ card.back }}</div>
+						</div>
+					</div>
+				</transition>
 			</div>
 		</div>
 		<!-- Buttons -->
@@ -78,26 +87,43 @@ export default {
 </script>
 
 <style scoped>
+.fc-fill {
+	height: 100%;
+	width: 100%;
+}
 .fc-game {
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
-.fc-card {
+.fc-card-box {
 	margin: 7px;
 	flex: 1;
-	perspective: 1000px;
+}
+.fc-card-row {
 	position: relative;
+}
+.fc-card {
+	perspective: 1000px;
+	position: absolute;
+}
+
+.swipe-enter-active, .swipe-leave-active {
+	transition: transform 0.5s;
+}
+.swipe-enter {
+	transform: translateX(110%);
+}
+.swipe-leave-to {
+	transform: translateX(-110%);
 }
 
 /* Card flipping obtained from https://davidwalsh.name/css-flip */
 .fc-card-flipper {
-	height: 100%;
-	width: 100%;
 	transition: 0.5s;
 	transform-style: preserve-3d;
-	position: absolute;
 }
 .fc-card-flipper.flipped {
 	transform: rotateY(-180deg);
