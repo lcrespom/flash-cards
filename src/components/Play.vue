@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<!-- Buttons -->
-		<game-buttons @card-turn="flip"
+		<game-buttons :show-flip="false"
 			@card-ok="cardOK" @card-fail="cardFail" @card-unknown="cardUnknown" />
 	</div>
 </template>
@@ -90,8 +90,9 @@ export default {
 	perspective: 1000px;
 	position: relative;
 }
+
+/* Card flipping obtained from https://davidwalsh.name/css-flip */
 .fc-card-flipper {
-	/* Card flipping obtained from https://davidwalsh.name/css-flip */
 	height: 100%;
 	width: 100%;
 	transition: 0.5s;

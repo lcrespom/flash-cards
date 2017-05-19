@@ -1,6 +1,6 @@
 <template>
 	<div class="fc-game-buttons">
-		<div class="fc-button-row">
+		<div v-if="showFlip" class="fc-button-row">
 			<button class="fc-game-btn btn btn-primary"
 				@click="$emit('card-turn')">
 				<div class="fc-game-turn">↩️</div>
@@ -25,7 +25,8 @@
 
 <script>
 export default {
-	name: 'game-buttons'
+	name: 'game-buttons',
+	props: ['showFlip']
 };
 </script>
 
