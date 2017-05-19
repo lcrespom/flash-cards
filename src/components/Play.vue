@@ -6,8 +6,7 @@
 		<div class="fc-card-box">
 			<div class="fc-card-row fc-fill">
 				<transition name="swipe">
-					<div v-for="(card, i) of cards" v-if="i == cardNum"
-						:key="i"
+					<div :key="cardNum"
 						class="fc-card fc-fill"
 						style="`transform: translateX(${i}00%)`">
 						<div class="fc-card-flipper fc-fill"

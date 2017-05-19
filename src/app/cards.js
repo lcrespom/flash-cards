@@ -1,6 +1,5 @@
 export function loadCards(id) {
 	return Promise.resolve([
-		{ front: 'f', back: 'b' },
 		{ front: 'Spain', back: 'Madrid' },
 		{ front: 'France', back: 'Paris' },
 		{ front: 'Great Britain', back: 'London' },
