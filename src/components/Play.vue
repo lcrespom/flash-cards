@@ -4,20 +4,16 @@
 		<game-status :stats="stats" :cards="cards" :cardNum="cardNum" />
 		<!-- Cards -->
 		<div class="fc-card-box">
-			<div class="fc-card-row fc-fill">
-				<transition name="swipe">
-					<div :key="cardNum"
-						class="fc-card fc-fill"
-						style="`transform: translateX(${i}00%)`">
-						<div class="fc-card-flipper fc-fill"
-							:class="{ flipped: flipped }"
-							@click="flip">
-							<div class="fc-card-front">{{ card.front }}</div>
-							<div class="fc-card-back">{{ card.back }}</div>
-						</div>
+			<transition name="swipe">
+				<div class="fc-card fc-fill" :key="cardNum">
+					<div class="fc-card-flipper fc-fill"
+						:class="{ flipped: flipped }"
+						@click="flip">
+						<div class="fc-card-front">{{ card.front }}</div>
+						<div class="fc-card-back">{{ card.back }}</div>
 					</div>
-				</transition>
-			</div>
+				</div>
+			</transition>
 		</div>
 		<!-- Buttons -->
 		<game-buttons :show-flip="false"
@@ -100,8 +96,6 @@ export default {
 .fc-card-box {
 	margin: 7px;
 	flex: 1;
-}
-.fc-card-row {
 	position: relative;
 }
 .fc-card {
