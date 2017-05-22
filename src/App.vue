@@ -22,4 +22,12 @@ export default {
 	height: 100%;
 	width: 100%;
 }
+.fc-title {
+	width: 100%;
+	text-align: center;
+	color: #444;
+}
+.fc-content {
+	padding: 60px 10px 10px;
+}
 </style>

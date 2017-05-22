@@ -45,8 +45,8 @@
 			</div>
 
 			<div class="form-group fc-group fc-btn-row">
-				<button class="btn btn-default">Cancel</button>
-				<button class="btn btn-primary">Save</button>
+				<router-link to="/" class="btn btn-default">Cancel</router-link>
+				<router-link to="/" class="btn btn-primary">Save</router-link>
 			</div>
 		</form>
 	</div>
@@ -59,14 +59,6 @@ export default {
 </script>
 
 <style scoped>
-.fc-title {
-	width: 100%;
-	text-align: center;
-	color: #444;
-}
-.fc-content {
-	padding: 60px 10px 10px;
-}
 .fc-group {
 	margin-top: 30px;
 }

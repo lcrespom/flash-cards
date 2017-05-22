@@ -37,7 +37,7 @@ export default {
 		return {
 			flipped: false,
 			cards: [],
-			stats: INITIAL_STATS,
+			stats: Object.assign({}, INITIAL_STATS),
 			card: { front: 'Loading...', back: 'Loading...' },
 			cardNum: 0
 		};
@@ -46,7 +46,7 @@ export default {
 		loadCards(this.$route.params.id)
 		.then(cards => {
 			this.cards = cards;
-			this.stats = INITIAL_STATS;
+			this.stats = Object.assign({}, INITIAL_STATS);
 			this.card = cards[0];
 			this.cardNum = 0;
 		});
@@ -74,7 +74,8 @@ export default {
 				this.flipped = false;
 			}
 			else {
-				//ToDo: finish game
+				this.$root.stats = this.stats;
+				this.$router.push('/results');
 			}
 		}
 	}
