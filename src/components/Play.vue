@@ -1,5 +1,5 @@
 <template>
-	<div class="fc-game">
+	<div class="fc-game fc-fill">
 		<!-- Status -->
 		<game-status :stats="stats" :cards="cards" :cardNum="cardNum" />
 		<!-- Cards -->
@@ -82,13 +82,7 @@ export default {
 </script>
 
 <style scoped>
-.fc-fill {
-	height: 100%;
-	width: 100%;
-}
 .fc-game {
-	position: absolute;
-	top: 0; left: 0; bottom: 0; right: 0;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
