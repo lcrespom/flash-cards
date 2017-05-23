@@ -8,14 +8,15 @@
 				<label for="settings-shuffle">Shuffle</label>
 				<div class="checkbox" id="settings-shuffle"  style="margin-top: 0">
 					<label>
-						<input type="checkbox">Shuffle cards
+						<input type="checkbox" v-model="settings.shuffle">Shuffle cards
 					</label>
 				</div>
 			</div>
 
 			<div class="form-group fc-group">
 				<label for="settings-timer">Time per card</label>
-				<select class="form-control" id="settings-timer">
+				<select class="form-control" id="settings-timer"
+					v-model="settings.timer">
 					<option value="5">5 s</option>
 					<option value="5">10 s</option>
 					<option value="15">15 s</option>
@@ -32,13 +33,15 @@
 				<label>Which side to show</label>
 				<div class="radio" style="margin-top: 0">
 					<label>
-						<input type="radio" name="frontback" value="front" checked>
+						<input type="radio" name="frontback" :value="true"
+							v-model="settings.front">
 						Show card front
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="frontback" value="back">
+						<input type="radio" name="frontback" :value="false"
+							v-model="settings.front">
 						Show card back
 					</label>
 				</div>
@@ -46,7 +49,7 @@
 
 			<div class="form-group fc-group fc-btn-row">
 				<router-link to="/" class="btn btn-default">Cancel</router-link>
-				<router-link to="/" class="btn btn-primary">Save</router-link>
+				<a @click="save" class="btn btn-primary">Save</a>
 			</div>
 		</form>
 	</div>
@@ -54,7 +57,19 @@
 
 <script>
 export default {
-	name: 'settings'
+	name: 'settings',
+	data() {
+		return {
+			// Clone global settings, so they are not overridden if user cancels
+			settings: Object.assign({}, this.$root.settings)
+		};
+	},
+	methods: {
+		save() {
+			this.$root.settings = this.settings;
+			this.$router.push('/');
+		}
+	}
 };
 </script>
 
@@ -62,7 +77,7 @@ export default {
 .fc-group {
 	margin-top: 30px;
 }
-.fc-btn-row > button {
+.fc-btn-row > .btn {
 	width: 5em;
 }
 </style>

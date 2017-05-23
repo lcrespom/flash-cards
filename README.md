@@ -6,11 +6,7 @@
 - Pages:
 	- Home:
 		- Link to settings, search, new card set
-	- Settings (from home):
-		* Shuffle y/n (checkbox)
-		* Card timer (Select with No limit, 5, 10, 15, 20, 30, 40, 50, 60 seconds)
-		* Show card front / show card back (radio)
-		- Save settings and use them in game
+	- Settings (from home)
 	- Play game (from search)
 		- Obey settings:
 			- Shuffle

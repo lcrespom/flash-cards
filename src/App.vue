@@ -5,8 +5,17 @@
 </template>
 
 <script>
+const settings = {
+	shuffle: true,
+	timer: 0,
+	front: true
+};
+
 export default {
-	name: 'app'
+	name: 'app',
+	mounted() {
+		this.$root.settings = settings;
+	}
 };
 </script>
 

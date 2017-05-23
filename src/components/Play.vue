@@ -30,6 +30,18 @@ const INITIAL_STATS = {
 	ok: 0, fail: 0, unknown: 0
 };
 
+function shuffleArray(a) {
+	let r = a.slice();
+	let max = r.length;
+	for (let i = 0; i < max - 1; i++) {
+		let pos = Math.floor(Math.random() * (max - i));
+		let temp = r[pos];
+		r[pos] = r[max - i - 1];
+		r[max - i - 1] = temp;
+	}
+	return r;
+}
+
 export default {
 	name: 'play',
 	components: { GameStatus, GameButtons },
@@ -45,10 +57,11 @@ export default {
 	mounted() {
 		loadCards(this.$route.params.id)
 		.then(cards => {
-			this.cards = cards;
+			this.cards = this.$root.settings.shuffle ? shuffleArray(cards) : cards;
 			this.stats = Object.assign({}, INITIAL_STATS);
-			this.card = cards[0];
-			this.cardNum = 0;
+			this.card = this.cards[0];
+			this.cardNum = -1;
+			this.nextCard();
 		});
 	},
 	methods: {
@@ -72,6 +85,12 @@ export default {
 				this.cardNum++;
 				this.card = this.cards[this.cardNum];
 				this.flipped = false;
+				if (!this.$root.settings.front) {
+					let f = this.card.front;
+					this.card.front = this.card.back;
+					this.card.back = f;
+					// ToDo: swap colors too
+				}
 			}
 			else {
 				this.$root.stats = this.stats;
