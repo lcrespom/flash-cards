@@ -62,11 +62,6 @@ export default {
 .fc-group {
 	margin-top: 30px;
 }
-.fc-btn-row {
-	display: flex;
-	justify-content: space-around;
-	width: 100%;
-}
 .fc-btn-row > button {
 	width: 5em;
 }

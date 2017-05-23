@@ -30,4 +30,9 @@ export default {
 .fc-content {
 	padding: 60px 10px 10px;
 }
+.fc-btn-row {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
 </style>

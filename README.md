@@ -12,7 +12,10 @@
 		* Show card front / show card back (radio)
 		- Save settings and use them in game
 	- Play game (from search)
-		- at end of game, display game results page
+		- Obey settings:
+			- Shuffle
+			- Timer
+			- Show front/back
 	- Game results (from play game):
 		- Show results: number of OK, fail, ignored
 		- Show score
@@ -24,3 +27,5 @@
 		- Search, select => edit / play
 	- New card set (from home)
 	- Edit card set (from search)
+- REST server
+- Sound effects

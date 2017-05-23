@@ -4,20 +4,35 @@
 			<div class="fc-title navbar-brand">Results</div>
 		</nav>
 		<div class="fc-content">
-			OK: {{ $root.stats.ok }}<br/>
-			Unknown: {{ $root.stats.unknown }}</br>
-			Fail: {{ $root.stats.fail }}<br/>
-			<router-link :to="{ name: 'play', params: { id: 1 } }"
-				class="btn btn-primary">Again</router-link>
-			<router-link to="/"
-				class="btn btn-primary">Home</router-link>
+			<div class="fc-group">
+				<fc-stat icon="ok" text="OK" :value="$root.stats.ok" />
+				<fc-stat icon="question-sign" text="Unknown" :value="$root.stats.unknown" />
+				<fc-stat icon="remove" text="Fail" :value="$root.stats.fail" />
+			</div>
+			<div class="fc-btn-row fc-group">
+				<router-link :to="{ name: 'play', params: { id: 1 } }"
+					class="btn btn-primary btn-lg">Again</router-link>
+				<router-link to="/"
+					class="btn btn-primary btn-lg">Home</router-link>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+const FcStat = {
+	props: ['icon', 'text', 'value'],
+	template: `
+		<div class="fc-stat">
+			<span :class="'glyphicon glyphicon-' + icon"></span>
+			{{ text }}: {{ value }}
+		</div>
+	`
+};
+
 export default {
-	name: 'results'
+	name: 'results',
+	components: { FcStat }
 };
 </script>
 
@@ -25,12 +40,11 @@ export default {
 .fc-group {
 	margin-top: 30px;
 }
-.fc-btn-row {
-	display: flex;
-	justify-content: space-around;
-	width: 100%;
+.fc-stat {
+	font-size: 200%;
+	text-align: center;
 }
 .fc-btn-row > button {
-	width: 5em;
+	width: 6em;
 }
 </style>
