@@ -8,10 +8,6 @@
 		- Link to settings, search, new card set
 	- Settings (from home)
 	- Play game (from search)
-		- Obey settings:
-			- Shuffle
-			- Timer
-			- Show front/back
 	- Game results (from play game):
 		- Show results: number of OK, fail, ignored
 		- Show score
@@ -23,5 +19,15 @@
 		- Search, select => edit / play
 	- New card set (from home)
 	- Edit card set (from search)
+	- Card details
+		- Title
+		- Tags
+		- Description
+		- Copy link / share
+- Desktop version
+	- Responsive design via media queries
 - REST server
+- User id/pw
+	- Save settings
+	- Edit access only to your own cards
 - Sound effects

@@ -15,6 +15,12 @@
 				</div>
 			</transition>
 		</div>
+		<!-- Timer -->
+		<div v-if="$root.settings.timer > 0" class="fc-timer-band-box">
+			<timer-band ref="timer"
+				:time="$root.settings.timer * 1000"
+				@done="cardUnknown" />
+		</div>
 		<!-- Buttons -->
 		<game-buttons :show-flip="false"
 			@card-ok="cardOK" @card-fail="cardFail" @card-unknown="cardUnknown" />
@@ -23,6 +29,7 @@
 
 <script>
 import GameStatus from './GameStatus';
+import TimerBand from './TimerBand';
 import GameButtons from './GameButtons';
 import { loadCards } from '../app/cards';
 
@@ -44,7 +51,7 @@ function shuffleArray(a) {
 
 export default {
 	name: 'play',
-	components: { GameStatus, GameButtons },
+	components: { GameStatus, TimerBand, GameButtons },
 	data() {
 		return {
 			flipped: false,
@@ -91,6 +98,8 @@ export default {
 					this.card.back = f;
 					// ToDo: swap colors too
 				}
+				if (this.$refs.timer)
+					this.$refs.timer.start();
 			}
 			else {
 				this.$root.stats = this.stats;
@@ -155,5 +164,10 @@ export default {
 	background: #aa8;
 	color: white;
 	transform: rotateY(180deg);
+}
+
+.fc-timer-band-box {
+	padding: 7px;
+	width: 100%;
 }
 </style>
