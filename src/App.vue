@@ -35,6 +35,8 @@ export default {
 	width: 100%;
 	text-align: center;
 	color: #444;
+	font-weight: bold;
+	font-size: 140%;
 }
 .fc-content {
 	padding: 60px 10px 10px;

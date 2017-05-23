@@ -2,9 +2,11 @@
 	<div class="fc-game-status">
 		<span>{{ time }}</span>
 		<span>
-			<span class="glyphicon glyphicon-ok"></span>: {{ stats.ok }} -
-			<span class="glyphicon glyphicon-question-sign"></span>: {{ stats.unknown }}
-			<span class="glyphicon glyphicon-remove"></span>: {{ stats.fail }} -
+			<span class="glyphicon glyphicon-ok"></span> {{ stats.ok }}
+			&nbsp;
+			<span class="glyphicon glyphicon-question-sign"></span> {{ stats.unknown }}
+			&nbsp;
+			<span class="glyphicon glyphicon-remove"></span> {{ stats.fail }}
 		</span>
 		<span>{{ cardNum + 1 }}/{{ cards.length }}</span>
 	</div>
@@ -42,7 +44,7 @@ export default {
 .fc-game-status {
 	display: flex;
 	justify-content: space-between;
-	margin: 0 7px;
+	margin: 3px 7px -3px 7px;
 	font-size: 150%;
 }
 </style>
