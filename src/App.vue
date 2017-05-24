@@ -27,6 +27,14 @@ export default {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+@media (min-width: 768px) {
+	#app {
+		margin: auto;
+		width: 400px;
+		height: 600px;
+	}
+}
+
 .fc-fill {
 	height: 100%;
 	width: 100%;

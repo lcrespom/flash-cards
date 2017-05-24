@@ -24,10 +24,9 @@
 		- Tags
 		- Description
 		- Copy link / share
-- Desktop version
-	- Responsive design via media queries
 - REST server
 - User id/pw
 	- Save settings
 	- Edit access only to your own cards
 - Sound effects
+- UX: provide some way to exit card game
