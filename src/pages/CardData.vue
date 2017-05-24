@@ -13,6 +13,31 @@
 export default {
 	name: 'card-data'
 };
+/*
+	Name: ...
+	Tags: ...
+	Description: ...
+
+	Cancel => home
+	Save => edit
+
+	--------
+
+	Edit:
+
+	Front: textarea
+	Back: textarea
+	< x/N > (x)
+	save & play
+
+	--------
+
+	Search:
+	.... [Q]
+	results
+
+	select result => card-data/id
+*/
 </script>
 
 <style scoped>
