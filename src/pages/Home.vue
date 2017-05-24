@@ -6,7 +6,7 @@
 		<div class="fc-home-buttons fc-fill fc-content">
 			<router-link to="search"
 				class="fc-home-btn btn btn-primary btn-lg">Search</router-link>
-			<router-link to="new"
+			<router-link to="details/new"
 				class="fc-home-btn btn btn-primary btn-lg">New</router-link>
 			<router-link to="settings"
 				class="fc-home-btn btn btn-primary btn-lg">Settings</router-link>
