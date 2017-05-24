@@ -3,7 +3,7 @@
 		<div v-if="showFlip" class="fc-button-row">
 			<button class="fc-game-btn btn btn-primary"
 				@click="$emit('card-turn')">
-				<div class="fc-game-turn">↩️</div>
+				<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
 			</button>
 		</div>
 		<div class="fc-button-row">
@@ -47,9 +47,5 @@ export default {
 }
 .fc-game-btn > span {
 	font-size: 170%;
-}
-.fc-game-turn {
-  font-size: 300%;
-  margin-top: -6px;
 }
 </style>

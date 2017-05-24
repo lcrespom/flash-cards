@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import GameStatus from './GameStatus';
-import TimerBand from './TimerBand';
-import GameButtons from './GameButtons';
+import GameStatus from '../components/GameStatus';
+import TimerBand from '../components/TimerBand';
+import GameButtons from '../components/GameButtons';
 import { loadCards } from '../app/cards';
 
 const INITIAL_STATS = {

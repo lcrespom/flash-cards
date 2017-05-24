@@ -17,9 +17,8 @@
 		- Repeat button
 	- Search cards (from home)
 		- Search, select => edit / play
-	- New card set (from home)
 	- Edit card set (from search)
-	- Card details
+	- Card details: from home => new / from search => select
 		- Title
 		- Tags
 		- Description
@@ -29,4 +28,6 @@
 	- Save settings
 	- Edit access only to your own cards
 - Sound effects
-- UX: provide some way to exit card game
+- UX
+	- Provide some way to exit card game
+	- Route transitions

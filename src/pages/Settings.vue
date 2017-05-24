@@ -17,13 +17,9 @@
 				<label for="settings-timer">Time per card</label>
 				<select class="form-control" id="settings-timer"
 					v-model="settings.timer">
-					<option value="5">5 s</option>
-					<option value="10">10 s</option>
-					<option value="15">15 s</option>
-					<option value="20">20 s</option>
-					<option value="30">30 s</option>
-					<option value="40">40 s</option>
-					<option value="60">60 s</option>
+					<option v-for="t of [5, 10, 15, 20, 30, 40, 60]" :value="t">
+						{{ t }} s
+					</option>
 					<option value="0">No time limit</option>
 				</select>
 			</div>
