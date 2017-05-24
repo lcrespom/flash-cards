@@ -30,4 +30,3 @@
 - Sound effects
 - UX
 	- Provide some way to exit card game
-	- Route transitions
