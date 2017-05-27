@@ -8,3 +8,12 @@ export function loadCards(id) {
 		{ front: 'Italy', back: 'Rome' }
 	]);
 }
+
+export function saveCards(meta) {
+	// let method = 'POST';
+	// if (meta.id.length > 0)
+	// 	method = 'PUT';
+	// else delete meta.id;
+	//ToDo: perform AJAX call
+	return 'card_set_id';
+}

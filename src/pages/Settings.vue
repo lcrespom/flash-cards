@@ -6,7 +6,7 @@
 		<form class="fc-content">
 			<div class="form-group fc-group">
 				<label for="settings-shuffle">Shuffle</label>
-				<div class="checkbox" id="settings-shuffle"  style="margin-top: 0">
+				<div class="checkbox" id="settings-shuffle" style="margin-top: 0">
 					<label>
 						<input type="checkbox" v-model="settings.shuffle">Shuffle cards
 					</label>
