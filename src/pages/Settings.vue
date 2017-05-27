@@ -69,9 +69,6 @@ export default {
 </script>
 
 <style scoped>
-.fc-group {
-	margin-top: 30px;
-}
 .fc-btn-row > .btn {
 	width: 5em;
 }

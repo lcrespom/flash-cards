@@ -56,6 +56,9 @@ export default {
 	justify-content: space-around;
 	width: 100%;
 }
+.fc-group {
+	margin-top: 30px;
+}
 
 /* Route transition */
 .fade-enter-active, .fade-leave-active {

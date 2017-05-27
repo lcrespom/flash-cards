@@ -37,9 +37,6 @@ export default {
 </script>
 
 <style scoped>
-.fc-group {
-	margin-top: 30px;
-}
 .fc-stat {
 	font-size: 200%;
 	text-align: center;
