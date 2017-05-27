@@ -15,18 +15,27 @@
 					v-model="back"></textarea>
 			</div>
 
-			<div class="form-group fc-group fc-prev-next">
-				<button @click="move(-1)" class="btn btn-primary"
-					:disabled="cardNum == 0">
-					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<div class="form-group fc-group fc-edit-buttons">
+				<div>
+					<button @click="move(-1)" class="btn btn-info"
+						:disabled="cardNum == 0">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					</button>
+					&nbsp;
+					<span class="fc-card-num">
+						{{ cardNum + 1 }}/{{ cards.length }}
+					</span>
+					&nbsp;
+					<button @click="move(1)" class="btn btn-info">
+						<span :class="`glyphicon glyphicon-${nextIcon}`" aria-hidden="true"></span>
+					</button>
+				</div>
+				<button @click="remove" class="btn btn-warning"
+					:disabled="cards.length <= 1">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				</button>
-				&nbsp;
-				<span class="fc-card-num">
-					{{ cardNum + 1 }} / {{ cards.length }}
-				</span>
-				&nbsp;
-				<button @click="move(1)" class="btn btn-primary">
-					<span :class="`glyphicon glyphicon-${nextIcon}`" aria-hidden="true"></span>
+				<button class="btn btn-primary">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 				</button>
 			</div>
 		</div>
@@ -49,6 +58,12 @@ export default {
 		move(num) {
 			this.storeCard();
 			this.cardNum += num;
+			this.update();
+		},
+		remove() {
+			this.cards.splice(this.cardNum, 1);
+			if (this.cardNum >= this.cards.length)
+				this.cardNum--;
 			this.update();
 		},
 		save() {
@@ -77,9 +92,14 @@ export default {
 }
 .fc-card-num {
 	font-size: 150%;
-	/* ToDo: vertically center text */
+	vertical-align: middle;
 }
-.fc-prev-next {
-	text-align: center;
+.fc-edit-buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+textarea {
+	font-size: 120%;
 }
 </style>
