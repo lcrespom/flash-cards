@@ -17,7 +17,8 @@
 				<textarea class="form-control" rows="3"
 					v-model="meta.description"></textarea>
 			</div>
-			<!-- ToDo: select buttons depending on route -->
+			<!-- ToDo: select buttons depending on route,
+				add a "play" button if route is not .../new -->
 			<div class="form-group fc-group fc-btn-row">
 				<a @click="back" class="btn btn-default">Back</a>
 				<button type="submit" @click="edit($event)"
@@ -35,13 +36,14 @@ export default {
 	name: 'card-data',
 	directives: { focus },
 	data() {
+		let meta = this.$root.cardMeta || {
+			_id: '',
+			name: '',
+			tags: '',
+			description: ''
+		};
 		return {
-			meta: {
-				_id: '',
-				name: '',
-				tags: '',
-				description: ''
-			}
+			meta
 		};
 	},
 	methods: {
@@ -57,32 +59,6 @@ export default {
 		}
 	}
 };
-/*
-	Name: ...
-	Tags: ...
-	Description: ...
-
-	Back => home
-	Edit => edit
-	Play => play card game (show if not new)
-
-	--------
-
-	Edit:
-
-	Front: textarea
-	Back: textarea
-	< x/N > (x)
-	Done => save and back to CardData
-
-	--------
-
-	Search:
-	.... [Q]
-	results
-
-	select result => card-data/id
-*/
 </script>
 
 <style scoped>
