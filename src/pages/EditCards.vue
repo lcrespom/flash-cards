@@ -7,7 +7,7 @@
 			<div class="form-group fc-group">
 				<label for="card-name">Question (front)</label>
 				<textarea class="form-control" rows="3"
-					v-model="front"></textarea>
+					v-model="front" v-focus></textarea>
 			</div>
 			<div class="form-group fc-group">
 				<label for="card-name">Answer (back)</label>
@@ -34,7 +34,7 @@
 					:disabled="cards.length <= 1">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				</button>
-				<button class="btn btn-primary">
+				<button @click="save" class="btn btn-primary">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 				</button>
 			</div>
@@ -43,8 +43,12 @@
 </template>
 
 <script>
+import { saveCards } from '../app/cards';
+import focus from '../directives/focus';
+
 export default {
 	name: 'edit-cards',
+	directives: { focus },
 	data() {
 		return {
 			front: '',
@@ -67,7 +71,8 @@ export default {
 			this.update();
 		},
 		save() {
-			//ToDo: save card and navigate back to card details
+			saveCards(this.$root.cardMeta, this.cards);
+			this.$router.back();
 		},
 		storeCard() {
 			this.cards[this.cardNum] = { front: this.front, back: this.back };

@@ -6,7 +6,7 @@
 		<form class="fc-fill fc-content" ref="form">
 			<div class="form-group fc-group">
 				<label for="card-name">Card set name</label>
-				<input class="form-control" required v-model="meta.name">
+				<input class="form-control" required v-model="meta.name" v-focus>
 			</div>
 			<div class="form-group fc-group">
 				<label for="card-name">Tags</label>
@@ -29,9 +29,11 @@
 
 <script>
 import { saveCards } from '../app/cards';
+import focus from '../directives/focus';
 
 export default {
 	name: 'card-data',
+	directives: { focus },
 	data() {
 		return {
 			meta: {
@@ -50,6 +52,7 @@ export default {
 			if (!this.$refs.form.checkValidity()) return;
 			evt.preventDefault();
 			let id = saveCards(this.meta);
+			this.$root.cardMeta = this.meta;
 			this.$router.push({ name: 'edit', params: { id }});
 		}
 	}

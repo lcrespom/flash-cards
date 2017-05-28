@@ -9,7 +9,7 @@ export function loadCards(id) {
 	]);
 }
 
-export function saveCards(meta) {
+export function saveCards(meta, cards = []) {
 	// let method = 'POST';
 	// if (meta.id.length > 0)
 	// 	method = 'PUT';
