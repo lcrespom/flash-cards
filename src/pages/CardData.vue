@@ -35,29 +35,31 @@
 import { saveCards } from '../app/cards';
 import focus from '../directives/focus';
 
+const EMPTY_META = {
+	name: '',
+	tags: '',
+	description: ''
+};
+
 export default {
 	name: 'card-data',
 	directives: { focus },
 	data() {
 		// ToDo: if (this.$route.params.id) loadCards(this.$route.params.id)
-		let meta = this.$root.cardMeta || {
-			name: '',
-			tags: '',
-			description: ''
-		};
-		return {
-			meta,
-			isNew: true
-		};
-	},
-	mounted() {
-		if (this.$route.name == 'details-new') {
+		let meta = EMPTY_META;
+		let isNew = (this.$route.name == 'details-new');
+		if (isNew) {
 			this.$root.cardId = null;
 			this.$root.cardMeta = null;
+			this.$root.cards = null;
 		}
 		else {
-			this.isNew = false;
+			meta = this.$root.cardMeta || EMPTY_META;
 		}
+		return {
+			meta,
+			isNew
+		};
 	},
 	methods: {
 		edit(evt) {

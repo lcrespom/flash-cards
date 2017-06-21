@@ -16,7 +16,7 @@
 			</transition>
 		</div>
 		<!-- Timer -->
-		<div v-if="$root.settings.timer > 0" class="fc-timer-band-box">
+		<div v-if="$root.settings && $root.settings.timer > 0" class="fc-timer-band-box">
 			<timer-band ref="timer"
 				:time="$root.settings.timer * 1000"
 				@done="cardUnknown" />
@@ -62,9 +62,12 @@ export default {
 		};
 	},
 	mounted() {
+		//TODO if this.$root.cards, no need to load them
 		loadCards(this.$route.params.id)
-		.then(cards => {
-			this.cards = this.$root.settings.shuffle ? shuffleArray(cards) : cards;
+		.then(data => {
+			this.cards = this.$root.settings.shuffle
+				? shuffleArray(data.cards)
+				: data.cards;
 			this.stats = Object.assign({}, INITIAL_STATS);
 			this.card = this.cards[0];
 			this.cardNum = -1;

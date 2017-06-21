@@ -4,24 +4,29 @@ export class RestClient {
 	}
 
 	getAll() {
-		return fetch(this.url)
-		.then(response => response.json());
+		return getJson(fetch(this.url));
+	}
+
+	get(id) {
+		return getJson(fetch(this.url + '/' + id));
 	}
 
 	post(data) {
-		return fetch(this.url, fetchInit('POST', data))
-		.then(response => response.json());
+		return getJson(fetch(this.url, fetchInit('POST', data)));
 	}
 
 	put(data) {
-		return fetch(this.url + '/' + data._id, fetchInit('PUT', data))
-		.then(response => response.json());
+		return getJson(fetch(this.url + '/' + data._id, fetchInit('PUT', data)));
 	}
 
 	delete(id) {
-		return fetch(this.url + '/' + id, { method: 'DELETE'})
-		.then(response => response.json());
+		return getJson(fetch(this.url + '/' + id, { method: 'DELETE' }));
 	}
+}
+
+
+function getJson(promise) {
+	return promise.then(response => response.json());
 }
 
 function fetchInit(method, data) {
