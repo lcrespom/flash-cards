@@ -36,8 +36,8 @@ export default {
 	name: 'card-data',
 	directives: { focus },
 	data() {
+		// ToDo: if (this.$route.params.id) loadCards(this.$route.params.id)
 		let meta = this.$root.cardMeta || {
-			_id: '',
 			name: '',
 			tags: '',
 			description: ''
@@ -53,9 +53,12 @@ export default {
 		edit(evt) {
 			if (!this.$refs.form.checkValidity()) return;
 			evt.preventDefault();
-			let id = saveCards(this.meta);
-			this.$root.cardMeta = this.meta;
-			this.$router.push({ name: 'edit', params: { id }});
+			saveCards(this.$root.cardId, this.meta, this.$root.cards)
+			.then(id => {
+				this.$root.cardId = id;
+				this.$root.cardMeta = this.meta;
+				this.$router.push({ name: 'edit', params: { id }});
+			});
 		}
 	}
 };

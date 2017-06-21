@@ -71,8 +71,12 @@ export default {
 			this.update();
 		},
 		save() {
-			saveCards(this.$root.cardMeta, this.cards);
-			this.$router.back();
+			this.storeCard();
+			saveCards(this.$root.cardId, this.$root.cardMeta, this.cards);
+			this.$router.push({
+				name: 'details',
+				params: { id: this.$root.cardId }
+			});
 		},
 		storeCard() {
 			this.cards[this.cardNum] = { front: this.front, back: this.back };

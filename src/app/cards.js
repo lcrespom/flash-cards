@@ -1,3 +1,8 @@
+import { RestClient } from '../utils/rest-client';
+
+let prefix = location.hostname == 'localhost' ? 'http://localhost:3000' : '';
+let cardsApi = new RestClient(prefix + '/api/cards');
+
 export function loadCards(id) {
 	return Promise.resolve([
 		{ front: 'Spain', back: 'Madrid' },
@@ -9,11 +14,11 @@ export function loadCards(id) {
 	]);
 }
 
-export function saveCards(meta, cards = []) {
-	// let method = 'POST';
-	// if (meta.id.length > 0)
-	// 	method = 'PUT';
-	// else delete meta.id;
-	//ToDo: perform AJAX call
-	return 'card_set_id';
+export function saveCards(id, meta, cards = []) {
+	let data = { meta, cards };
+	if (id && id.length > 0) {
+		data._id = id;
+		return cardsApi.put(data).then(_ => id);
+	}
+	return cardsApi.post(data).then(response => response._id);
 }

@@ -38,6 +38,10 @@ export default new Router({
 			component: CardData
 		},
 		{
+			path: '/details',
+			name: 'details',
+			component: CardData
+		},		{
 			path: '/edit/:id',
 			name: 'edit',
 			component: EditCards
