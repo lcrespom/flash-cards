@@ -7,6 +7,7 @@ import Play from '@/pages/Play';
 import Results from '@/pages/Results';
 import CardData from '@/pages/CardData';
 import EditCards from '@/pages/EditCards';
+import Search from '@/pages/Search';
 
 Vue.use(Router);
 
@@ -41,10 +42,16 @@ export default new Router({
 			path: '/details',
 			name: 'details',
 			component: CardData
-		},		{
+		},
+		{
 			path: '/edit/:id',
 			name: 'edit',
 			component: EditCards
+		},
+		{
+			name: 'search',
+			path: '/search',
+			component: Search
 		}
 	]
 });

@@ -16,6 +16,11 @@ const DUMMY_CARDS = {
 	_id: '1'
 };
 
+
+export function listCards() {
+	return cardsApi.getAll().then(response => response.data);
+}
+
 export function loadCards(id) {
 	if (id == '1')
 		return Promise.resolve(DUMMY_CARDS);
