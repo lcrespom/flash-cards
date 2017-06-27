@@ -22,7 +22,7 @@
 				<router-link v-if="!isNew"
 					class="btn btn-primary"
 					:to="{ name: 'play', params: { id: $root.cardId } }">
-					play
+					Play
 				</router-link>
 				<button type="submit" @click="edit($event)"
 					class="btn btn-primary">Edit</button>
@@ -52,6 +52,7 @@ export default {
 			this.$root.cardId = null;
 			this.$root.cardMeta = null;
 			this.$root.cards = null;
+			meta = EMPTY_META;
 		}
 		else {
 			meta = this.$root.cardMeta || EMPTY_META;

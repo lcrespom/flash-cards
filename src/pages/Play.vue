@@ -127,6 +127,7 @@ export default {
 .fc-card {
 	perspective: 1000px;
 	position: absolute;
+	white-space: pre-wrap;
 }
 
 .swipe-enter-active, .swipe-leave-active {

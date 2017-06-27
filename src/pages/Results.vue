@@ -10,7 +10,7 @@
 				<fc-stat icon="remove" text="Fail" :value="$root.stats.fail" />
 			</div>
 			<div class="fc-btn-row fc-group">
-				<router-link :to="{ name: 'play', params: { id: 1 } }"
+				<router-link :to="{ name: 'play', params: { id: $root.cardId } }"
 					class="btn btn-primary btn-lg">Again</router-link>
 				<router-link to="/"
 					class="btn btn-primary btn-lg">Home</router-link>

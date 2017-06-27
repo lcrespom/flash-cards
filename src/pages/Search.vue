@@ -55,7 +55,10 @@ export default {
 			this.cards = filterCards(this.fullCards, this.searchText);
 		},
 		selectCard(card) {
-			console.log(card);
+			this.$root.cardId = card._id;
+			this.$root.cardMeta = card.meta;
+			this.$root.cards = card.cards;
+			this.$router.push({ name: 'details' });
 		}
 	}
 };
@@ -79,7 +82,7 @@ export default {
 .fc-cards-item {
 	padding: 5px;
 	margin: 7px;
-	box-shadow: 0px 5px 8px -5px rgba(0,0,0,0.5)
+	box-shadow: 0px 5px 8px -5px rgba(0,0,0,0.5);
 }
 .fc-cards-name {
 	font-weight: bold;

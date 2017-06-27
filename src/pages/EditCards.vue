@@ -46,16 +46,20 @@
 import { saveCards } from '../app/cards';
 import focus from '../directives/focus';
 
+
+const EMPTY_CARDS = [{ front: '', back: '' }];
+
 export default {
 	name: 'edit-cards',
 	directives: { focus },
 	data() {
+		let cards = this.$root.cards || EMPTY_CARDS;
 		return {
-			front: '',
-			back: '',
-			cards: [{ front: '', back: '' }],
+			front: cards[0].front,
+			back: cards[0].back,
+			cards,
 			cardNum: 0,
-			nextIcon: 'plus'
+			nextIcon: cards.length > 1 ? 'chevron-right' : 'plus'
 		};
 	},
 	methods: {
