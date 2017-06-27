@@ -10,8 +10,6 @@
 				class="fc-home-btn btn btn-primary btn-lg">New</router-link>
 			<router-link to="settings"
 				class="fc-home-btn btn btn-primary btn-lg">Settings</router-link>
-			<router-link :to="{ name: 'play', params: { id: 1 } }"
-				class="fc-home-btn btn btn-primary btn-lg">Play (testing)</router-link>
 		</div>
 	</div>
 </template>

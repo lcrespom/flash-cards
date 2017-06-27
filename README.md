@@ -3,30 +3,30 @@
 > Flashcard game, for memorizing any kind of knowledge
 
 ## ToDo
+- UX
+	- **Provide some way to exit card game**
+	- PWA
 - Pages:
-	- Home:
-		- Link to settings, search, new card set
-	- Settings (from home)
-	- Play game (from search)
-	- Game results (from play game):
-		- Show results: number of OK, fail, ignored
+	* ~~Home: Link to search, new card set, settings~~
+	* ~~Search cards (from home)~~
+		* ~~Search, select => view details~~
+	* ~~Card details: from home => new / from search => select~~
+		* ~~Title, Tags, Description~~
+		- **Copy link / share**
+	* ~~Settings (from home)~~
+	* ~~Play game (from card details page)~~
+	* ~~Game results (displayed after ending game):~~
+		* ~~Show results: number of OK, fail, ignored~~
 		- Show score
 			- Rule: OK: +1, fail: -1, ignore: 0
 		- Show stats progression (NTH)
-		- Home button
-		- Repeat button
-	- Search cards (from home)
-		- Search, select => edit / play
-	- Edit card set (from search)
-	- Card details: from home => new / from search => select
-		- Title
-		- Tags
-		- Description
-		- Copy link / share
-- REST server
+		* ~~Home button~~
+		* ~~Repeat button~~
+	* ~~Edit card set (from card details)~~
+- ~~REST server~~
+	* ~~Resty~~
+	- https://github.com/typicode/json-server
 - User id/pw
 	- Save settings
-	- Edit access only to your own cards
+	- Edit & delete access only to your own cards
 - Sound effects
-- UX
-	- Provide some way to exit card game
