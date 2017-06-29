@@ -1,0 +1,24 @@
+[
+  {
+    "meta": {
+      "name": "Countries and capitals",
+      "tags": "geography",
+      "description": ""
+    },
+    "cards": [
+      {
+        "front": "Spain",
+        "back": "Madrid"
+      },
+      {
+        "front": "France",
+        "back": "Paris"
+      },
+      {
+        "front": "Italy",
+        "back": "Rome"
+      }
+    ],
+    "_id": "u3ghtp73qut1rl2c"
+  }
+]
