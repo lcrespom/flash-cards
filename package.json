@@ -12,7 +12,7 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "serve": "resty --data dist --static dist --port 80 --disable-cors",
-    "start": "resty --data heroku --static heroku --disable-cors"
+    "start": "resty --data heroku --static heroku --port $PORT --disable-cors"
   },
   "dependencies": {
     "resty-zero-config": "^1.2.0",
